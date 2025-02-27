@@ -1,0 +1,52 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #dff0d8;
+    margin: 0;
+    padding: 0;
+}
+
+/* 컨테이너 */
+.container {
+    width: 90%;
+    max-width: 400px;
+    background: #f0f8ff;
+    padding: 50px;
+    margin: 50px auto;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 입력 필드 & 드롭다운 */
+input, select {
+    width: 20%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+/* 버튼 스타일 */
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: black;
+    color: #e0ffff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #dff0d8;
+}
+
+/* 결과 출력 */
+#result {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
