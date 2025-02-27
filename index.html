@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토크렌치 단위 변환기</title>
+    <link rel="stylesheet" href="style.css"> <!-- CSS 파일 연결 -->
+</head>
+<body>
+    <div class="container">
+        <h2>토크렌치 단위 변환기</h2>
+        <input type="number" id="inputValue" placeholder="값 입력">
+        
+        <select id="fromUnit">
+            <option value="N·m">N·m</option>
+            <option value="kgf·m">kgf·m</option>
+            <option value="lbf·ft">lbf·ft</option>
+            <option value="lbf·in">lbf·in</option>
+        </select>
+        
+        <span>→</span>
+        
+        <select id="toUnit">
+            <option value="N·m">N·m</option>
+            <option value="kgf·m">kgf·m</option>
+            <option value="lbf·ft">lbf·ft</option>
+            <option value="lbf·in">lbf·in</option>
+        </select>
+        
+        <button onclick="convertTorque()">변환하기</button>
+        
+        <p id="result"></p>
+    </div>
+    
+    <script src="script.js"></script> <!-- JS 파일 연결 -->
+</body>
+</html>
