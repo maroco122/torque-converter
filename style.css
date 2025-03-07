@@ -1,52 +1,148 @@
-/* 기본 스타일 */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #dff0d8;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토크렌치 단위 변환기</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #dff0d8;
+            margin: 0;
+            padding: 0;
+        }
 
-/* 컨테이너 */
-.container {
-    width: 90%;
-    max-width: 400px;
-    background: #f0f8ff;
-    padding: 50px;
-    margin: 50px auto;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+        /* 컨테이너 */
+        .container {
+            width: 90%;
+            max-width: 350px;
+            background: #f0f8ff;
+            padding: 50px;
+            margin: 50px auto;
+            border-radius: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
 
-/* 입력 필드 & 드롭다운 */
-input, select {
-    width: 20%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 5px solid #ccc;
-    border-radius: 10px;
-    font-size: 15px;
-}
+        /* 입력 필드 & 드롭다운 */
+        input, select {
+            width: 60%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 15px;
+        }
 
-/* 버튼 스타일 */
-button {
-    width: 50%;
-    padding: 10px;
-    background-color: black;
-    color: #e0ffff;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 16px;
-}
+        /* 버튼 스타일 */
+        button {
+            width: 50%;
+            padding: 10px;
+            background-color: black;
+            color: #e0ffff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-button:hover {
-    background-color: #dff0d8;
-}
+        button:hover {
+            background-color: #dff0d8;
+        }
 
-/* 결과 출력 */
-#result {
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 20px;
-}
+        /* 결과 출력 */
+        #result {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: red;  /* 글자 색상 변경 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>토크렌치 단위 변환기</h2>
+        <input type="number" id="inputValue" placeholder="값 입력">
+        
+        <select id="fromUnit">
+            <option value="N·m">N·m</option>
+            <option value="kgf·m">kgf·m</option>
+            <option value="lbf·ft">lbf·ft</option>
+            <option value="lbf·in">lbf·in</option>
+        </select>
+        
+        <span><br>👇<br></span>
+        
+        <select id="toUnit">
+            <option value="N·m">N·m</option>
+            <option value="kgf·m">kgf·m</option>
+            <option value="lbf·ft">lbf·ft</option>
+            <option value="lbf·in">lbf·in</option>
+        </select>
+        
+        <button onclick="convertTorque()">변환하기</button>
+      
+      <br>아래는 최적의 검색결과를 도출하였습니다
+        
+        <p id="result"></p>
+   <!-- 선택 버튼 추가 -->
+<div class="button-group" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <button class="blink-button" onclick="window.location.replace('https://msearch.shopping.naver.com/search/all?adQuery=%EB%B0%A9%EC%A7%84%EB%A7%88%EC%8A%A4%ED%81%AC&coupon=true&maxPrice=13300&minPrice=13300&origQuery=%EB%B0%A9%EC%A7%84%EB%A7%88%EC%8A%A4%ED%81%AC&pagingIndex=1&pagingSize=40&productSet=total&query=%EB%B0%A9%EC%A7%84%EB%A7%88%EC%8A%A4%ED%81%AC&sort=rel&spec=M10033538%7CM11279751&viewType=list')">"1급 방진마스크<br> 검색결과"</button>
+    <button class="blink-button" onclick="window.location.replace('https://msearch.shopping.naver.com/search/all?adQuery=%EC%83%A4%EC%9B%8C%ED%97%A4%EB%93%9C&maxPrice=15900&minPrice=15900&naverPay=true&origQuery=%EC%83%A4%EC%9B%8C%ED%97%A4%EB%93%9C&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%83%A4%EC%9B%8C%ED%97%A4%EB%93%9C&sort=rel&spec=M10014548%7CM10773813%20M10014547%7CM10030653&viewType=list')">"집에 하나쯤은? <br> 샤워헤드"</button>
+</div>
+
+
+<script>
+    function blinkButtons() {
+        let buttons = document.querySelectorAll(".blink-button"); // 모든 버튼 선택
+        let visible = true;
+
+        setInterval(() => {
+            visible = !visible; // 토글 기능
+            buttons.forEach(button => {
+                button.style.visibility = visible ? "visible" : "hidden";
+            });
+        }, 500); // 0.5초마다 깜빡이게 설정 (1초에 2번)
+    }
+
+    // 페이지 로드 후 깜빡이기 시작
+    window.onload = blinkButtons;
+</script>
+        <script>
+        // 변환 비율 정의
+        const conversionRates = {
+            "N·m": { "kgf·m": 0.10197, "lbf·ft": 0.73756, "lbf·in": 8.8507 },
+            "kgf·m": { "N·m": 9.80665, "lbf·ft": 7.233, "lbf·in": 86.796 },
+            "lbf·ft": { "N·m": 1.35582, "kgf·m": 0.1383, "lbf·in": 12 },
+            "lbf·in": { "N·m": 0.113, "kgf·m": 0.0115, "lbf·ft": 0.0833 }
+        };
+
+        // 단위 변환 함수
+        function convertTorque() {
+            let inputValue = parseFloat(document.getElementById("inputValue").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            
+            // 입력값이 없거나 숫자가 아닐 경우 오류 메시지 표시
+            if (isNaN(inputValue)) {
+                document.getElementById("result").innerText = "숫자 입력 안하지? 이것봐라!";
+                return;
+            }
+
+            // 동일한 단위 선택 시 경고 메시지 표시
+            if (fromUnit === toUnit) {
+                document.getElementById("result").innerText = "정신안차려? 단위가 같잖어";
+                return;
+            }
+
+            // 변환 계산 수행
+            let result = inputValue * conversionRates[fromUnit][toUnit];
+
+            // 결과 출력
+            document.getElementById("result").innerText = 
+                `${inputValue} ${fromUnit} = ${result.toFixed(4)} ${toUnit}`;
+        }
+    </script>
+</body>
+</html>
